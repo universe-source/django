@@ -1,3 +1,4 @@
+# coding:utf8
 """
 Django settings for unusebamboo project.
 
@@ -56,7 +57,7 @@ ROOT_URLCONF = 'unusebamboo.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -121,24 +122,9 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Templates
-TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-            ],
-        },
-    },
-]
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
-
+# 线上部署和线下部署
+#  STATIC_URL = 'http://static.127.0.0.1:8080/'
 STATIC_URL = '/static/'
+STATIC_ROOT = 'static11'

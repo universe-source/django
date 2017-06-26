@@ -1,3 +1,4 @@
+# coding:utf8
 """unusebamboo URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -17,16 +18,17 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf import settings
 from django.contrib.staticfiles import views
+from django.contrib.auth import views as auth_views
 from django.conf.urls.static import static
 
 
 
 urlpatterns = [
+    # 使用auth built-in进行认证登录
+    #  url(r'^login/$', auth_views.login, name='login'),
+    #  url(r'^logout/$', auth_views.logout, name='logout'),
+    # 管理后台
     url(r'^admin/', admin.site.urls),
     url(r'^polls/', include('polls.urls', namespace='polls')),
+    url(r'^person/', include('person.urls', namespace='person')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
-#  if settings.DEBUG:
-#      urlpatterns += [
-#          url(r'^static/(?P<path>.*)$', views.serve),
-#      ]

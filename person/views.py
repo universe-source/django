@@ -5,9 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-
-
-def login(req):
+def login_user(req):
     logout(req)
     username = password = ''
     if req.POST:
@@ -18,14 +16,25 @@ def login(req):
         if user is not None:
             if user.is_active:
                 login(req, user)
-                return HttpResponseRedirect('/main/')
+                return redirect('/person/main/')
+        else:
+            return redirect('/person/login_error/')
+    else:
+        return render(req, 'person/login.html', {
+            'username': username, 'password': password
+        })
 
-    return render(req, 'person/login.html', {
-        'username': username, 'password': password
-    })
+
+def logout_user(req):
+    logout(req)
+    return render(req, 'person/logout.html')
+
+
+def login_error(req):
+    return render(req, 'person/login_error.html')
 
 
 @login_required(login_url='/login/')
 def main(req):
     user = req.user
-    return render_to_response('person/main.html', {'user': user})
+    return render(req, 'person/main.html', {'user': user})

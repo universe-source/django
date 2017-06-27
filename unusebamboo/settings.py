@@ -108,3 +108,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = 'static'
+
+# EMAIL
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.163.com'
+EMAIL_HOST_USER = 'ilifediary2@163.com'
+EMAIL_HOST_PASSWORD = 'a297413'
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'ilifediary2@163.com'

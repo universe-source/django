@@ -24,9 +24,10 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    # 使用auth built-in进行认证登录
-    #  url(r'^login/$', auth_views.login, name='login'),
-    #  url(r'^logout/$', auth_views.logout, name='logout'),
+    url(r'^$', 'person.views.home', name='home'),
+    url(r'^about/$', 'person.views.about', name='about'),
+    url(r'^contact/$', 'person.views.contact', name='contact'),
+    url(r'^thanks/$', 'person.views.thanks', name='thanks'),
     # 管理后台
     url(r'^admin/', admin.site.urls),
     url(r'^polls/', include('polls.urls', namespace='polls')),

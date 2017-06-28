@@ -24,7 +24,7 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    url(r'^$', 'accounts.views.home', name='home'),
+    url(regex=r'^$', view='accounts.views.home', name='home'),
     url(r'^about/$', 'accounts.views.about', name='about'),
     url(r'^contact/$', 'accounts.views.contact', name='contact'),
     url(r'^thanks/$', 'accounts.views.thanks', name='thanks'),

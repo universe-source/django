@@ -33,7 +33,6 @@ def contact(req):
             errors.append('Enter a valid e-mail address.')
         if not errors:
             recipient_list = [req.POST.get('email')]
-            print recipient_list
             send_mail(
                 subject=req.POST['subject'],
                 message=req.POST['message'],

@@ -20,6 +20,7 @@ def about(req):
     return render(req, 'about.html')
 
 
+@login_required(login_url='/accounts/login/')
 def contact(req):
     errors = []
     # 注意，测试时不要添加test等字段
@@ -62,28 +63,28 @@ def login_user(req):
             if user is not None:
                 if user.is_active:
                     login(req, user)
-                    return redirect('/person/main/')
+                    return redirect('/accounts/main/')
             else:
                 message = 'Invalid username/password.'
     else:
         form = LoginForm()
-    return render(req, 'person/login.html', {
+    return render(req, 'accounts/login.html', {
         'message': message, 'form': form
         })
 
 
-@login_required(login_url='/person/login/')
+@login_required(login_url='/accounts/login/')
 def logout_user(req):
     logout(req)
-    return render(req, 'person/logout.html')
+    return render(req, 'accounts/logout.html')
 
 
 def login_error(req):
-    return render(req, 'person/login_error.html')
+    return render(req, 'accounts/login_error.html')
 
 
 # 如果没有登录，则直接跳转到登录界面
-@login_required(login_url='/person/login/')
+@login_required(login_url='/accounts/login/')
 def main(req):
     user = req.user
-    return render(req, 'person/main.html', {'user': user})
+    return render(req, 'accounts/main.html', {'user': user})

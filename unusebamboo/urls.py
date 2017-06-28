@@ -24,12 +24,12 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    url(r'^$', 'person.views.home', name='home'),
-    url(r'^about/$', 'person.views.about', name='about'),
-    url(r'^contact/$', 'person.views.contact', name='contact'),
-    url(r'^thanks/$', 'person.views.thanks', name='thanks'),
+    url(r'^$', 'accounts.views.home', name='home'),
+    url(r'^about/$', 'accounts.views.about', name='about'),
+    url(r'^contact/$', 'accounts.views.contact', name='contact'),
+    url(r'^thanks/$', 'accounts.views.thanks', name='thanks'),
     # 管理后台
     url(r'^admin/', admin.site.urls),
     url(r'^polls/', include('polls.urls', namespace='polls')),
-    url(r'^person/', include('person.urls', namespace='person')),
+    url(r'^accounts/', include('accounts.urls', namespace='accounts')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

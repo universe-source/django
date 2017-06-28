@@ -3,13 +3,24 @@
 <!DOCTYPE html> 
 <html lang="en"> 
 <head> 
-  <link rel="stylesheet" type="text/css" href="{% static 'person/css/style.css' %}"> 
+  <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/style.css' %}"> 
   <title>{% block title %}{% endblock %}</title> 
 </head>
 <body>
   <nav>
     <a href="{% url 'home' %}">Home</a>
+    &nbsp;&nbsp;
     <a href="{% url 'about' %}">About</a>
+    &nbsp;&nbsp;
+    <a href="{% url 'contact' %}">Contact</a>
+    &nbsp;&nbsp;
+
+    {% if user.is_active %}
+    <a href="{% url 'accounts:logout' %}">Logout</a>
+    {% else %}
+    <a href="{% url 'accounts:login' %}">Login</a>
+    {% endif %}
+
   </nav>
   {% block content %}
   {% endblock %}

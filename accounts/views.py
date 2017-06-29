@@ -3,9 +3,10 @@ from django.shortcuts import render
 from django.shortcuts import render_to_response,redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.core.context_processors import csrf
 from django.core.mail import send_mail
 from smtplib import SMTPException
-from .models import LoginForm
+from .models import LoginForm, RegistrationForm
 
 
 def home(req):
@@ -46,6 +47,24 @@ def contact(req):
 
 def thanks(req):
     return render(req, 'thanks.html')
+
+
+def register(req):
+    if req.method == 'POST':
+        form = RegistrationForm(req.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/accounts/register/complete/')
+    else:
+        form = RegistrationForm()
+    token = {}
+    token.update(csrf(req))
+    token['form'] = form
+    return render(req, 'accounts/registration_form.html', token)
+
+
+def register_complete(req):
+    return render(req, 'accounts/registration_complete.html')
 
 
 # Create your views here.

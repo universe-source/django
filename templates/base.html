@@ -12,6 +12,8 @@
   <nav>
     <a href="{% url 'home' %}">Home</a>
     &nbsp;&nbsp;
+    <a href="{% url 'admin:index' %}">Admin</a>
+    &nbsp;&nbsp;
     <a href="{% url 'about' %}">About</a>
     &nbsp;&nbsp;
     <a href="{% url 'contact' %}">Contact</a>
@@ -23,6 +25,8 @@
     <a href="{% url 'accounts:login' %}">Login</a>
     &nbsp;&nbsp;
     <a href="{% url 'accounts:register' %}">Register</a>
+    &nbsp;&nbsp;
+    <a href="{% url 'password_reset' %}">Forgot password</a>
     {% endif %}
 
   </nav>

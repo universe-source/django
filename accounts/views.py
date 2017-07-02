@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.shortcuts import render_to_response,redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import Group
 from django.core.context_processors import csrf
 from django.core.mail import send_mail
 from smtplib import SMTPException
@@ -70,6 +71,9 @@ def register_complete(req):
 # Create your views here.
 def login_user(req):
     message = None
+    if req.user.is_authenticated():
+        return render(req, 'index.html')
+
     if req.POST:
         # 使用表单类
         form = LoginForm(req.POST)

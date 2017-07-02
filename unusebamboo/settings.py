@@ -1,3 +1,4 @@
+# coding:utf8
 """
 Django settings for unusebamboo project.
 
@@ -29,7 +30,6 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'polls',
 )
 
+# 中间件
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

@@ -11,6 +11,5 @@ class Accounts(User):
 
 
 class LoginForm(forms.Form):
-    # This creates two variables called username and password that are assigned form character fields
     username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput())

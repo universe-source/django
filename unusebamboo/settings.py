@@ -31,11 +31,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'bootstrap_admin', # always before django.contrib.admin
     'django.contrib.admin',
+
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    # Static静态文件步骤1: 
     'django.contrib.staticfiles',
 
     'accounts',
@@ -55,12 +58,18 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'unusebamboo.urls'
 
+# 配置
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        # 将模板存储在文件中, 而不是底层Template API, 保存模板的目录称为模板目录
+        'DIRS': [
+            'templates',
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
+            # 上下文处理器: 自动传递一些上下文变量, 例如user
+            # http://python.usyiyi.cn/documents/django_182/ref/templates/api.html
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
@@ -70,6 +79,7 @@ TEMPLATES = [
         },
     },
 ]
+BOOTSTRAP_ADMIN_SIDEBAR_MENU = True
 
 WSGI_APPLICATION = 'unusebamboo.wsgi.application'
 
@@ -104,11 +114,16 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.8/howto/static-files/
-
+# Static 文件步骤2: 引用位于STATIC_ROOT文件时的网址
+# Static 文件步骤3: 开启静态文件服务
+#   如果 DEBUG=True , 默认开启, 但是不使用collectstatic, 
+#       而是在每一个app下面创建static目录
+#   参考: http://python.usyiyi.cn/translate/django_182/howto/static-files/index.html
 STATIC_URL = '/static/'
+# 用于收集静态目录的绝对路径, 在执行: python manager.py collectstatic
 STATIC_ROOT = 'static'
+# 静态文件查找目录, 配合collectstatic一起使用, 不能和STATIC_ROOT相同
+STATICFILES_DIRS = ()
 
 # EMAIL
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

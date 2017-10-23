@@ -1,26 +1,31 @@
 {% load staticfiles %}
+{% comment %}
+    多行注释, 该标签中的内容会被忽略, 
+    另外, 单行注释为: {# ----- #}
+
+    使用load staticfiles来确保后面的硬编码静态资源(相对路径)更加顺利,例如:
+        访问/static/app1/img1.jpg
+        <img src="{% static "app1/img1.jpg" %} alt="image1" >...</img>
+{% endcomment %}
 
 <!DOCTYPE html> 
 <html lang="en"> 
 
 <head> 
-  <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/style.css' %}"> 
+  <link rel="stylesheet" type="text/css" href="{% static "accounts/css/style.css" %}"> 
   <title>{% block title %}{% endblock %}</title> 
 </head>
 
 <body>
   <nav>
-    <a href="{% url 'home' %}">Home</a>
-    &nbsp;&nbsp;
-    <a href="{% url 'about' %}">About</a>
-    &nbsp;&nbsp;
-    <a href="{% url 'contact' %}">Contact</a>
-    &nbsp;&nbsp;
+    <a href="{% url "home" %}">Home</a>
+    <a href="{% url "about" %}">About</a>
+    <a href="{% url "contact" %}">Contact</a>
 
     {% if user.is_active %}
-    <a href="{% url 'accounts:logout' %}">Logout</a>
+    <a href="{% url "accounts:logout" %}">Logout</a>
     {% else %}
-    <a href="{% url 'accounts:login' %}">Login</a>
+    <a href="{% url "accounts:login" %}">Login</a>
     {% endif %}
 
   </nav>

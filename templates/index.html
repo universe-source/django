@@ -1,14 +1,19 @@
 {% extends 'base.html' %}
+{% comment %}
+模板继承, 类似下面, 在外层不存在任何HTML元素节点时, 所有的模板标签都是从base.html继承
+{% endcomment %}
+
 {% block title %}Simplesite | Home{% endblock %}
 
 {% block content %}
 
-<h1>Unusebamboo</h1>
+<h3>个人主页, 目前还未完成</h3>
 
+{# 自动传递一些默认变量, 见上下文处理器 #}
 {% if user.is_active %}
     Welcome {{ user.username }}.
 {% else %}
-    <p><a href="/person/login/">Log in</a></p>
+    <p>请先登录: <a href="/accounts/login/">Log in</a></p>
 {% endif %}
 
 {% endblock %}

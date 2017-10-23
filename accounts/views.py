@@ -9,6 +9,9 @@ from .models import LoginForm
 
 
 def home(req):
+    """模板使用方法见: 
+    http://python.usyiyi.cn/documents/django_182/ref/templates/upgrading.html
+    """
     if req.user.is_active:
         pass
     else:

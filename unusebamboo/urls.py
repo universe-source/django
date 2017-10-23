@@ -14,22 +14,27 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+from django.conf import settings
 from django.conf.urls import url, include
 from django.contrib import admin
-from django.conf import settings
 from django.contrib.staticfiles import views
 from django.contrib.auth import views as auth_views
 from django.conf.urls.static import static
 
+from accounts.views import home, about, contact, thanks
 
 
 urlpatterns = [
-    url(regex=r'^$', view='accounts.views.home', name='home'),
-    url(r'^about/$', 'accounts.views.about', name='about'),
-    url(r'^contact/$', 'accounts.views.contact', name='contact'),
-    url(r'^thanks/$', 'accounts.views.thanks', name='thanks'),
+    # 从django 1.10开始, 不再支持使用字符串来表示view函数
+    url(regex=r'^$', view=home, name='home'),
+    url(r'^about/$', about, name='about'),
+    url(r'^contact/$', contact, name='contact'),
+    url(r'^thanks/$', thanks, name='thanks'),
     # 管理后台
     url(r'^admin/', admin.site.urls),
+
+    # include
     url(r'^polls/', include('polls.urls', namespace='polls')),
     url(r'^accounts/', include('accounts.urls', namespace='accounts')),
+
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

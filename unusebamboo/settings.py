@@ -121,9 +121,16 @@ USE_TZ = True
 #   参考: http://python.usyiyi.cn/translate/django_182/howto/static-files/index.html
 STATIC_URL = '/static/'
 # 用于收集静态目录的绝对路径, 在执行: python manager.py collectstatic
-STATIC_ROOT = 'static'
+STATIC_ROOT = 'staticfiles'
 # 静态文件查找目录, 配合collectstatic一起使用, 不能和STATIC_ROOT相同
-STATICFILES_DIRS = ()
+STATICFILES_DIRS = (
+    'static',
+)
+
+
+# MEDIA
+MEDIA_URL = '/media/'
+
 
 # EMAIL
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

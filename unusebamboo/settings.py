@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'accounts',
     'polls',
 )
@@ -79,9 +80,9 @@ WSGI_APPLICATION = 'unusebamboo.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'idjango',
-        'USER': 'root',
-        'PASSWORD': 'root',
+        'NAME': 'django',
+        'USER': 'django',
+        'PASSWORD': 'django@297413',
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'OPTIONS': {'charset': 'utf8mb4'},

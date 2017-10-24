@@ -60,12 +60,11 @@ def login_user(req):
         if form.is_valid():
             username = req.POST['username']
             password = req.POST['password']
-
             user = authenticate(username=username, password=password)
             if user is not None:
                 if user.is_active:
                     login(req, user)
-                    return redirect('/accounts/main/')
+                    return redirect('/')
             else:
                 message = 'Invalid username/password.'
     else:
@@ -83,10 +82,3 @@ def logout_user(req):
 
 def login_error(req):
     return render(req, 'accounts/login_error.html')
-
-
-# 如果没有登录，则直接跳转到登录界面
-@login_required(login_url='/accounts/login/')
-def main(req):
-    user = req.user
-    return render(req, 'accounts/main.html', {'user': user})

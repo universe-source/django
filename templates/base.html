@@ -12,9 +12,8 @@
 <html lang="en"> 
 
 <head> 
-  <link rel="stylesheet" type="text/css" href="{% static "accounts/css/style.css" %}"> 
   <link rel="stylesheet" type="text/css" href="{% static "styles/basic.css" %}">
-  <script src="{% static "scripts/modernizr-1.6.min.js"></script>
+  <script src="{% static "scripts/modernizr-1.6.min.js" %}"></script>
 
   <title>{% block title %}{% endblock %}</title> 
 
@@ -22,8 +21,7 @@
 
 <body>
   <header>
-    {# 使用 MEDIA 配置 #}
-    <img src="{{ MEDIA_URL }}/logo.gif" alt="Bamboo的个人博客" />
+    <img src="{% static "images/logo.gif" %}" alt="Bamboo的个人博客" />
     <nav>
       <ul>
         <li><a href="{% url "home" %}">Home</a></li>

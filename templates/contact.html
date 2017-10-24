@@ -1,25 +1,38 @@
 {% extends 'base.html' %}
 
-{% block title %}Contact Form{% endblock %}
+{% block title %}联系我{% endblock %}
+
 
 {% block content %}
 
-      <h2>Contact Form</h2>
-      <p>To send us a message fill out the below form.</p>
+<h2>联系我</h2>
       
-    {% if errors %}
-        <ul>
-            {% for error in errors %}
-            <li>{{ error }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-  
-    <form action="/contact/" method="post">{% csrf_token %}
-        <p>Subject: <input type="text" name="subject"></p>
-        <p>Your e-mail: <input type="text" name="email"></p>
-        <p>Message: <textarea name="message" rows="10" cols="50"></textarea></p>
-        <input type="submit" value="Submit">
-    </form>
+{% if errors %}
+  <ul>
+    {% for error in errors %}
+    <li>{{ error }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+<form action="/contact/" method="post">{% csrf_token %}
+  <fieldset>
+    <p>
+     <label for="name">Name:</label>
+     <input type="text" id="name" name="name" placeholder="Your name" required="required" />
+    </p>
+
+    <p>
+     <label for="email">Email:</label>
+     <input type="email" id="email" name="email" placeholder="Your email address" required="required" />
+    </p>
+
+    <p>
+     <label for="message">Message:</label>
+     <textarea cols="45" rows="7" id="message" name="message" required="required" placeholder="Write your message here."></textarea>
+    </p>
+    <input type="submit" value="Send" />
+   </fieldset>
+</form>
 
 {% endblock %}

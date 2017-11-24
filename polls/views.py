@@ -1,9 +1,7 @@
-#coding:utf8
+# coding:utf8
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect
-from django.template import RequestContext, loader
-from django.shortcuts import render
+from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.views import generic
 

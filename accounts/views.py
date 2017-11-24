@@ -1,15 +1,14 @@
 # coding:utf8
-from django.shortcuts import render
-from django.shortcuts import render_to_response,redirect
+#  from smtplib import SMTPException
+from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
-from smtplib import SMTPException
 from .models import LoginForm
 
 
 def home(req):
-    """模板使用方法见: 
+    """模板使用方法见:
     http://python.usyiyi.cn/documents/django_182/ref/templates/upgrading.html
     """
     if req.user.is_active:
@@ -18,7 +17,7 @@ def home(req):
         pass
     return render(req, 'index.html')
 
-    
+
 def about(req):
     return render(req, 'about.html')
 
@@ -39,7 +38,7 @@ def contact(req):
             send_mail(
                 subject=req.POST['subject'],
                 message=req.POST['message'],
-                from_email='ilifediary2@163.com', 
+                from_email='ilifediary2@163.com',
                 recipient_list=recipient_list,
                 fail_silently=False
             )
@@ -70,8 +69,7 @@ def login_user(req):
     else:
         form = LoginForm()
     return render(req, 'accounts/login.html', {
-        'message': message, 'form': form
-        })
+        'message': message, 'form': form})
 
 
 @login_required(login_url='/accounts/login/')

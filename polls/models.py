@@ -28,7 +28,7 @@ class Question(models.Model):
 
 class Choice(models.Model):
     """投票应用"""
-    question = models.ForeignKey(Question)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
     choice_text = models.CharField(max_length=200)
     votes = models.IntegerField(default=0)
 

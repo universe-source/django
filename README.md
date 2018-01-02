@@ -47,7 +47,10 @@ unusebamboo
 #### 3.1.5 使用(python)
 面向python程序员, 使用模板, 参考: [模板语言](http://python.usyiyi.cn/documents/django_182/ref/templates/api.html)
 
-
+## 4 Directory
+### 4.1 django
+链接django 1.2源码, 其中[源码注释版](git@github.com:unlessbamboo/django-source.git), 
+注意, 该注释版删除了源码中所有的locale, html等静态文件.
 
 
 

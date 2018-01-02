@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.conf import settings
-from django.conf.urls import url, include
+from django.urls import include, path
 from django.contrib import admin
 from django.contrib.staticfiles import views
 from django.contrib.auth import views as auth_views
@@ -25,16 +25,16 @@ from accounts.views import home, about, contact, thanks
 
 urlpatterns = [
     # 从django 1.10开始, 不再支持使用字符串来表示view函数
-    url(regex=r'^$', view=home, name='home'),
-    url(r'^about/$', about, name='about'),
-    url(r'^contact/$', contact, name='contact'),
-    url(r'^thanks/$', thanks, name='thanks'),
+    path(r'^$', home, name='home'),
+    path(r'^about/$', about, name='about'),
+    path(r'^contact/$', contact, name='contact'),
+    path(r'^thanks/$', thanks, name='thanks'),
     # 管理后台
-    url(r'^admin/', admin.site.urls),
+    path(r'^admin/', admin.site.urls),
 
     # include
-    url(r'^polls/', include('polls.urls')),
-    url(r'^accounts/', include('accounts.urls')),
+    path(r'^polls/', include('polls.urls')),
+    path(r'^accounts/', include('accounts.urls')),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

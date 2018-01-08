@@ -12,9 +12,10 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 from configurations import Configuration
+from .log_config import LogConfig
 
 
-class Common(Configuration):
+class Common(LogConfig, Configuration):
     # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 

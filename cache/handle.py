@@ -49,6 +49,10 @@ redis key:
     一个worker在接收到 SIGINT/SIGTERM 时, 等待current running task完成, 之后平滑自杀;
     在停止期间再次收到 SIGINT/SIGTERM 时, 强制杀死task(SIGKILL), 之后自杀;
     ----表现处理的现象就是, rq worker有时候需要按两次 CTRL + C;
+
+命令:
+    server: rq worker -c settings
+    client: python handle.py
 """
 import time
 from redis import Redis, StrictRedis

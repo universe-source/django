@@ -8,6 +8,8 @@ time:2017-06-03 20:52:26
 ## 1 Introduction
 Learning django.
 
+记得, 将django-source仓库代码放到该分支下.
+
 
 ## 2 Author
 unusebamboo

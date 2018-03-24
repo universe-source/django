@@ -1,0 +1,6 @@
+[submodule "django"]
+	path = django
+	url = git@github.com:unlessbamboo/django-source.git
+[submodule "rq"]
+	path = rq
+	url = git@github.com:unlessbamboo/rq.git

@@ -4,15 +4,16 @@
 {% block content %}
 
 <form method="post" action="/accounts/login/">
-{% csrf_token %}
+    <!-- 内置的login强制使用csrf验证，需要加上该标签 -->
+    {% csrf_token %}
 
-{% if message %}
-    <p> {{message}} </p>
-{% endif %}
+    {% if message %}
+        <p> {{message}} </p>
+    {% endif %}
 
-<table>
-    {{ form.as_table }}
-</table>
+    <table>
+        {{ form.as_table }}
+    </table>
 
 <input type="submit" value="login" />
 </form>

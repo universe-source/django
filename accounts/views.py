@@ -3,6 +3,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import Group
+from django.core.context_processors import csrf
 from django.core.mail import send_mail
 from .models import LoginForm
 
@@ -50,9 +52,30 @@ def thanks(req):
     return render(req, 'thanks.html')
 
 
+def register(req):
+    if req.method == 'POST':
+        form = RegistrationForm(req.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/accounts/register/complete/')
+    else:
+        form = RegistrationForm()
+    token = {}
+    token.update(csrf(req))
+    token['form'] = form
+    return render(req, 'accounts/registration_form.html', token)
+
+
+def register_complete(req):
+    return render(req, 'accounts/registration_complete.html')
+
+
 # Create your views here.
 def login_user(req):
     message = None
+    if req.user.is_authenticated():
+        return render(req, 'index.html')
+
     if req.POST:
         # 使用表单类
         form = LoginForm(req.POST)

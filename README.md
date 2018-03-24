@@ -10,7 +10,6 @@ Learning django.
 
 记得, 将django-source仓库代码放到该分支下.
 
-
 ## 2 Author
 unusebamboo
 
@@ -53,28 +52,3 @@ unusebamboo
 ### 4.1 django
 链接django 1.2源码, 其中[源码注释版](git@github.com:unlessbamboo/django-source.git), 
 注意, 该注释版删除了源码中所有的locale, html等静态文件.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
